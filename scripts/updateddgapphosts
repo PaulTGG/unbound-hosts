@@ -1,0 +1,8 @@
+#! /bin/sh
+
+wget -q -O ./ddgappdownload https://raw.githubusercontent.com/duckduckgo/tracker-blocklists/main/app/android-tds.json
+cat ./ddgappdownload | jq -r '.trackers | to_entries[] | select(.value.default == "block") | .key' > ./ddgapptempfile
+echo "server:" > ../conf/ddgapphosts.conf
+cat ./ddgapptempfile | awk '{print "local-zone: \""$1"\" redirect\nlocal-data: \""$1". A 0.0.0.0\""}' >> ../conf/ddgapphosts.conf
+rm ./ddgappdownload
+rm ./ddgapptempfile

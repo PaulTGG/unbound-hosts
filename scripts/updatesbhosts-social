@@ -1,0 +1,6 @@
+#! /bin/sh
+
+wget -q -O ./sbhostsdownload-social https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/social-only/hosts
+echo "server:" > ../conf/sbhosts-social.conf
+cat ./sbhostsdownload-social | grep '^0\.0\.0\.0' | awk '{print "local-zone: \""$2"\" redirect\nlocal-data: \""$2". A 0.0.0.0\""}' >> ../conf/sbhosts-social.conf
+rm ./sbhostsdownload-social

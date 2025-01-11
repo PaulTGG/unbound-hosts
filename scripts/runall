@@ -1,0 +1,9 @@
+#! /bin/sh
+
+./updateddgapphosts
+./updateddgwebhosts
+./updatesbhosts
+./updatesbhosts-fakenews
+./updatesbhosts-gambling
+./updatesbhosts-porn
+./updatesbhosts-social

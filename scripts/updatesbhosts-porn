@@ -1,0 +1,6 @@
+#! /bin/sh
+
+wget -q -O ./sbhostsdownload-porn https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/porn-only/hosts
+echo "server:" > ../conf/sbhosts-porn.conf
+cat ./sbhostsdownload-porn | grep '^0\.0\.0\.0' | awk '{print "local-zone: \""$2"\" redirect\nlocal-data: \""$2". A 0.0.0.0\""}' >> ../conf/sbhosts-porn.conf
+rm ./sbhostsdownload-porn

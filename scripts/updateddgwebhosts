@@ -1,0 +1,8 @@
+#! /bin/sh
+
+  wget -q -O ./ddgwebdownload https://raw.githubusercontent.com/duckduckgo/tracker-blocklists/main/web/v6/extension-tds.json
+cat ./ddgwebdownload | jq -r '.trackers | to_entries[] | select(.value.default == "block") | .key' > ./ddgwebtempfile
+echo "server:" > ../conf/ddgwebhosts.conf
+cat ./ddgwebtempfile | awk '{print "local-zone: \""$1"\" redirect\nlocal-data: \""$1". A 0.0.0.0\""}' >> ../conf/ddgwebhosts.conf
+rm ./ddgwebdownload
+rm ./ddgwebtempfile
