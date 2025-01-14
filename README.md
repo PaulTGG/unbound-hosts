@@ -1,5 +1,5 @@
 # Unbound Hosts
-Conversions of StevenBlack's unified hosts, and DuckDuckGo's tracker blocklists, to Unbound's config file format.
+Conversions of StevenBlack's unified hosts and extensions, and DuckDuckGo's tracker blocklists, to Unbound's config file format.
 
 ## Usage
 
